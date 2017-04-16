@@ -2,6 +2,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')(),
     mainBowerFiles = require('main-bower-files'),
+    browserSync = require('browser-sync'),
     autoprefixer = require('autoprefixer');
 var minimist = require('minimist'); // 用來讀取指令轉成變數
 
@@ -23,7 +24,10 @@ gulp.task('jade', function(){
   return gulp.src(['./source/**/*.jade'])
     .pipe($.plumber())
     .pipe($.jade({ pretty: true }))
-    .pipe(gulp.dest('./public'));
+    .pipe(gulp.dest('./public'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 gulp.task('babel', function(){
@@ -43,7 +47,10 @@ gulp.task('babel', function(){
       )
     )
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('./public/javascripts'));
+    .pipe(gulp.dest('./public/javascripts'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));;
 });
 
 gulp.task('bower', function() {
@@ -74,7 +81,16 @@ gulp.task('sass', function(){
     .pipe($.postcss(processors))
     .pipe( $.if(options.env === 'production', $.minifyCss()) ) // 假設開發環境則壓縮 CSS
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('./public/stylesheets'));
+    .pipe(gulp.dest('./public/stylesheets'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));;
+});
+
+gulp.task('browserSync', function() {
+  browserSync.init({
+    server: { baseDir: './public' }
+  })
 });
 
 gulp.task('watch', function(){
@@ -83,4 +99,4 @@ gulp.task('watch', function(){
   gulp.watch(['./source/javascripts/**/*.js'], ['babel']);
 });
 
-gulp.task('default', ['jade', 'sass', 'babel', 'vendorJs', 'watch']);
+gulp.task('default', ['jade', 'sass', 'babel', 'vendorJs', 'browserSync', 'watch']);
