@@ -14,13 +14,16 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
     "gulp-jade": "^1.1.0",
     "gulp-load-plugins": "^1.5.0",
+    "gulp-minify-css": "^1.2.4",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.4.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^2.1.2",
-    "main-bower-files": "^2.13.1"
+    "main-bower-files": "^2.13.1",
+    "minimist": "^1.2.0"
   }
 }
