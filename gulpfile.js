@@ -27,8 +27,8 @@ gulp.task('sass', function(){
 })
 
 gulp.task('watch', function(){
-  gulp.watch(['./source/stylesheets/**/*.sass', './source/stylesheets/**/*.scss'], 'sass');
-  gulp.watch(['./source/**/*.jade'], 'jade');
+  gulp.watch(['./source/stylesheets/**/*.sass', './source/stylesheets/**/*.scss'], ['sass']);
+  gulp.watch(['./source/**/*.jade'], ['jade']);
 });
 
 gulp.task('default', ['jade', 'sass', 'watch']);
