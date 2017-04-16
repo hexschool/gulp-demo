@@ -15,6 +15,18 @@ gulp.task('jade', function(){
     .pipe(gulp.dest('./public'));
 });
 
+gulp.task('babel', function(){
+  return gulp.src(['./source/javascripts/**/*.js'])
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.concat('all.js'))
+    .pipe($.babel({
+        presets: ['es2015']
+      }))
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('./public/javascripts'))
+});
+
 gulp.task('sass', function(){
   // PostCSS AutoPrefixer
   var processors = [
@@ -25,15 +37,18 @@ gulp.task('sass', function(){
 
   return gulp.src(['./source/stylesheets/**/*.sass', './source/stylesheets/**/*.scss'])
     .pipe($.plumber())
+    .pipe($.sourcemaps.init())
     .pipe($.sass({outputStyle: 'nested'})
       .on('error', $.sass.logError))
     .pipe($.postcss(processors))
+    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('./public/stylesheets'));
 });
 
 gulp.task('watch', function(){
   gulp.watch(['./source/stylesheets/**/*.sass', './source/stylesheets/**/*.scss'], ['sass']);
   gulp.watch(['./source/**/*.jade'], ['jade']);
+  gulp.watch(['./source/javascripts/**/*.js'], ['babel']);
 });
 
-gulp.task('default', ['jade', 'sass', 'watch']);
+gulp.task('default', ['jade', 'sass', 'babel', 'watch']);
