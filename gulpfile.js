@@ -5,6 +5,7 @@ var $ = require('gulp-load-plugins')(),
     browserSync = require('browser-sync'),
     autoprefixer = require('autoprefixer');
 var minimist = require('minimist'); // 用來讀取指令轉成變數
+var gulpSequence = require('gulp-sequence').use(gulp);
 
 // production || development
 // # gulp --env production
@@ -15,9 +16,10 @@ var envOptions = {
 var options = minimist(process.argv.slice(2), envOptions);
 console.log(options);
 
-gulp.task('copyHtml', function(){
-  return gulp.src(['./source/**/*.html'])
-    .pipe(gulp.dest('./public'));
+gulp.task('clean', function () {
+  return gulp.src(['./public', './.tmp'], {read: false}) // 選項讀取：false阻止gulp讀取文件的內容，使此任務更快。
+    .pipe($.clean());
+    cb(err)
 });
 
 gulp.task('jade', function(){
@@ -55,11 +57,11 @@ gulp.task('babel', function(){
 
 gulp.task('bower', function() {
   return gulp.src(mainBowerFiles())
-    .pipe(gulp.dest('./public/vendors'));
+    .pipe(gulp.dest('./.tmp/vendors'));
     cb(err);
 });
 gulp.task('vendorJs', ['bower'], function(){
-  return gulp.src(['./public/vendors/**/**.js'])
+  return gulp.src(['./.tmp/vendors/**/**.js'])
     .pipe($.concat('vendor.js'))
     .pipe( $.if(options.env === 'production', $.uglify()) )
     .pipe(gulp.dest('./public/javascripts'))
@@ -75,7 +77,7 @@ gulp.task('sass', function(){
 
   return gulp.src(['./source/stylesheets/**/*.sass', './source/stylesheets/**/*.scss'])
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
+    .pipe( $.sourcemaps.init())
     .pipe($.sass({outputStyle: 'nested'})
       .on('error', $.sass.logError))
     .pipe($.postcss(processors))
@@ -85,6 +87,12 @@ gulp.task('sass', function(){
     .pipe(browserSync.reload({
       stream: true
     }));;
+});
+
+gulp.task('imageMin', function(){
+  gulp.src('./source/images/*')
+    .pipe( $.if(options.env === 'production', $.imagemin()) )
+    .pipe(gulp.dest('./public/images'));
 });
 
 gulp.task('browserSync', function() {
@@ -99,4 +107,7 @@ gulp.task('watch', function(){
   gulp.watch(['./source/javascripts/**/*.js'], ['babel']);
 });
 
-gulp.task('default', ['jade', 'sass', 'babel', 'vendorJs', 'browserSync', 'watch']);
+gulp.task('sequence',  gulpSequence('clean', 'jade', 'sass', 'babel', 'vendorJs', 'imageMin'));
+
+gulp.task('default', ['jade', 'sass', 'babel', 'vendorJs', 'browserSync', 'imageMin', 'watch']);
+gulp.task('build', ['sequence'])
