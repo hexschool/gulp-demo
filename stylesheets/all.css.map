@@ -1,0 +1,1 @@
+{"version":3,"sources":["all.scss","_card.scss"],"names":[],"mappings":"AAEA;EACE,eAHqB,EAItB;;ACJD;EACE,eAAc;EACd,oCAA2B;MAA3B,gCAA2B;UAA3B,4BAA2B,EAC5B","file":"all.css","sourcesContent":["$primary-color: #00cc99; \n\nbody {\n  color: $primary-color;\n}\n\n@import \"card\";\n",".card {\n  display: block;\n  transform: translateX(20px);\n}"]}
