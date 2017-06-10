@@ -1,0 +1,33 @@
+
+extends ./_layout.jade
+
+block navbar
+  - var path = 'kh.html'
+  include partials/_navbar.jade
+
+block content
+  .container.mt-3
+    .row.py-5
+      .col-sm-6.offset-sm-3
+        p.text-muted.text-center 此範例頁面是由 JSON 資料格式快速產生
+    .row
+      .col-sm-3
+        ul.list-group
+          li.list-group-item.active 前 20 筆高雄旅遊網資訊
+          li.list-group-item 未啟用選項
+          li.list-group-item 未啟用選項
+          li.list-group-item 未啟用選項
+          li.list-group-item 未啟用選項
+
+      .col-sm-9
+        .card-columns
+          each item, i in data.result.records
+            if (i < 20)
+              .card
+                img.card-img-top.img-fluid(src='#{item.Picture1}', alt='Card image cap')
+                .card-block
+                  h4.card-title #{item.Name}
+                  p.card-text
+                    | #{item.Add}
+                  p.card-text
+                    | #{item.Opentime}

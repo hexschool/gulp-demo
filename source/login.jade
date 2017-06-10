@@ -1,0 +1,27 @@
+
+extends ./_layout.jade
+
+block navbar
+  - var path = 'login.html'
+  include partials/_navbar.jade
+
+block content
+  .container.mt-3
+    .row
+      .col-sm-6.offset-sm-3
+        .card
+          .card-block
+            h2.text-center
+              | 登入
+              small 示範頁面
+            .form-group
+              label(for='exampleInputEmail1') Email address
+              input#exampleInputEmail1.form-control(type='email',     aria-describedby='emailHelp', placeholder='Enter email')
+              small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+            .form-group
+              label(for='exampleInputPassword1') Password
+              input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+          .card-block.text-right
+            a.btn.btn-link(href="#") 取消
+            a.btn.btn-primary(href="#") 登入
+            

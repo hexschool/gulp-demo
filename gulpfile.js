@@ -25,6 +25,15 @@ gulp.task('clean', function () {
 gulp.task('jade', function(){
   return gulp.src(['./source/**/*.jade'])
     .pipe($.plumber())
+    .pipe($.data(function(file) {
+      var json = require('./source/data/data.json');
+      var menus = require('./source/data/menu.json');
+      var source = {
+        data: json,
+        menus: menus
+      }
+      return source;
+    }))
     .pipe($.jade({ pretty: true }))
     .pipe(gulp.dest('./public'))
     .pipe(browserSync.reload({
@@ -62,6 +71,10 @@ gulp.task('bower', function() {
 });
 gulp.task('vendorJs', ['bower'], function(){
   return gulp.src(['./.tmp/vendors/**/**.js'])
+    .pipe($.order([
+      'jquery.js',
+      'bootstrap.js'
+    ]))
     .pipe($.concat('vendor.js'))
     .pipe( $.if(options.env === 'production', $.uglify()) )
     .pipe(gulp.dest('./public/javascripts'))
