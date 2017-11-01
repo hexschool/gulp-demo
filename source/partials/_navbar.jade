@@ -6,9 +6,11 @@ mixin link(href, name)
     li.nav-item: a.nav-link(href="#{href}")
       | #{name} 
 
-nav.navbar.navbar-light.bg-faded.navbar-toggleable
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
   a.navbar-brand(href='index.html') 靜態範例頁面
-  .collapse.navbar-collapse
+  button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       each item, i in menus.list
         +link(item.url, item.name)

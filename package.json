@@ -31,7 +31,11 @@
     "minimist": "^1.2.0"
   },
   "dependencies": {
+    "babelify": "^7.3.0",
+    "bootstrap": "^4.0.0-beta.2",
+    "gulp-browserify": "^0.5.1",
     "gulp-data": "^1.2.1",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-order": "^1.1.1",
     "lodash": "^4.17.4"
   }
