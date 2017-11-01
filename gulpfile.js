@@ -114,7 +114,8 @@ gulp.task('imageMin', function () {
 
 gulp.task('browserSync', function () {
   browserSync.init({
-    server: { baseDir: './public' }
+    server: { baseDir: './public' },
+    reloadDebounce: 2000
   })
 });
 
