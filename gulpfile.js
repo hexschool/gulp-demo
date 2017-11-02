@@ -56,7 +56,10 @@ gulp.task('sass', function () {
 
 gulp.task('copy', function () {
   gulp.src(['./source/**/**', '!source/stylesheets/**/**'])
-    .pipe(gulp.dest('./public/'));
+    .pipe(gulp.dest('./public/'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 gulp.task('browserSync', function () {
