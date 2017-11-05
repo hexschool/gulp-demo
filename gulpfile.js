@@ -79,7 +79,7 @@ gulp.task('deploy', function () {
     .pipe($.ghPages());
 });
 
-gulp.task('sequence', gulpSequence('clean', 'sass', 'vendorJs', 'sass'));
+gulp.task('sequence', gulpSequence('clean', 'copy', 'sass', 'vendorJs', 'sass'));
 
 gulp.task('default', ['copy', 'sass', 'vendorJs', 'browserSync', 'watch']);
 gulp.task('build', ['sequence'])
