@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>六角西餐廳</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/stylesheets/all.css">
+  <style>
+    .bg-cover {
+      background-size: cover;
+      background-position: center center;
+    }
+
+    .mt-gutter-s {
+      margin-top: 10px;
+    }
+
+    .box-shadow {
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, .08);
+    }
+
+    .card > table th:first-child {
+      padding-left: 1.25rem
+    }
+    .card > table td:last-child {
+      padding-right: 1.25rem
+    }
+  </style>
+</head>
+
+<body>
+  <div class="py-1 text-right bg-secondary">
+    <div class="container">
+      <a href="#" class="text-white">
+        <span class="fa fa-twitter-square"></span>
+      </a>
+      <a href="#" class="text-white">
+        <span class="fa fa-facebook-official"></span>
+      </a>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/images/logo_w.svg" width="120" height="24" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">首頁
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              美味菜單
+            </a>
+            <div class="dropdown-menu mb-3" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">蔬果口味</a>
+              <a class="dropdown-item" href="#">沒肉不舒服</a>
+              <a class="dropdown-item" href="#">調味醬</a>
+            </div>
+          </li>
+        </ul>
+        <div class="form-inline">
+          <a href="#" class="btn btn-sm btn-outline-primary mr-1" data-toggle="modal" data-target="#loginModal">登入</a>
+          <a href="#" class="btn btn-sm btn-primary px-4" data-toggle="modal" data-target="#registerModal">註冊</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item header-carousel-item bg-cover active" style="background-image: url(https://images.unsplash.com/photo-1492683513054-55277abccd99?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=)">
+          <!-- 範例圖片來源: https://unsplash.com/photos/OSwea3yxjT0 -->
+          <div class="carousel-caption d-none d-md-block">
+            <div class="container">
+              <h3>一個人，田野間的輕鬆美味</h3>
+              <p>城小中假上問，洲元化究變快歡專，臺正機上色從多空放我。來來中的來落行間我海府子成隨上事女，的石在朋經以定空他；級病期他，會性前集一於得當院應對分！意斯能己水成神錢。</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item header-carousel-item bg-cover" style="background-image: url(https://images.unsplash.com/photo-1497668512640-fcbd959e5338?dpr=2&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=)">
+          <!-- 範例圖片來源: https://unsplash.com/photos/-7QwO2XB5es  -->
+          <div class="carousel-caption d-none d-md-block">
+            <div class="container">
+              <h3>大口的放縱，毫無保留</h3>
+              <p>組道心深的起一強理重麼變喜才她起寶事運果引物；生一越。為己的治應的了：有的兩懷華場前間不不存力：性張得燈表年健交公言要認才部黨岸家深此一和國專女特希這密年那報。</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item header-carousel-item bg-cover" style="background-image: url(https://images.unsplash.com/photo-1453831362806-3d5577f014a4?dpr=2&auto=format&fit=crop&w=1500&h=1016&q=80&cs=tinysrgb&crop=)">
+          <!-- 範例圖片來源: https://unsplash.com/photos/Pt_YmiYm7a4  -->
+          <div class="carousel-caption d-none d-md-block">
+            <div class="container">
+              <h3>愛戀的赤裸裸辣辣</h3>
+              <p>件臺水則的看方府機英下英影加非！為走改幾少我住準愛地下。巴開上人在，但雜處權音生什有會能教！還話弟手大了。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="container my-5">
+    <div class="form-row">
+      <div class="col-lg-8">
+        <div class="form-row">
+          <div class="col">
+            <div class="card bg-dark text-white bg-cover" style="background-image: url(https://images.unsplash.com/photo-1506073881649-4e23be3e9ed0?auto=format&fit=crop&w=1267&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D)">
+              <div class="card-body d-flex flex-column">
+                <div>
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content
+                    is a little bit longer.
+                  </p>
+                  <p class="card-text">Last updated 3 mins ago</p>
+                </div>
+              </div>
+              <div class="card-footer text-center border-top-0">
+                <button class="btn btn-outline-light">選擇此商品</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card bg-dark text-white bg-cover" style="background-image: url(https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1350&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D)">
+              <div class="card-body d-flex flex-column">
+                <div>
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content
+                    is a little bit longer.
+                  </p>
+                  <p class="card-text">Last updated 3 mins ago</p>
+                </div>
+              </div>
+              <div class="card-footer text-center border-top-0">
+                <button class="btn btn-outline-light">選擇此商品</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bg-dark text-white bg-cover mt-gutter-s" style="background-image: url(https://images.unsplash.com/photo-1484412509196-57eda96981e8?auto=format&fit=crop&w=1350&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D)">
+          <div class="card-body d-flex flex-column">
+            <div>
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is
+                a little bit longer.
+              </p>
+              <p class="card-text">Last updated 3 mins ago</p>
+            </div>
+          </div>
+          <div class="card-footer text-center border-top-0">
+            <button class="btn btn-outline-light">選擇此商品</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col">
+        <div class="card bg-dark text-white bg-cover h-100" style="background-image: url(https://images.unsplash.com/photo-1503146234394-631200675614?auto=format&fit=crop&w=634&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D)">
+          <div class="card-body d-flex flex-column">
+            <div>
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is
+                a little bit longer.
+              </p>
+              <p class="card-text">Last updated 3 mins ago</p>
+            </div>
+          </div>
+          <div class="card-footer text-center border-top-0">
+            <button class="btn btn-outline-light">選擇此商品</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <div class="form-row">
+      <div class="col-md py-4">
+        <div class="card border-0 box-shadow h-100">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1496492699470-7b0c53d0cb0d?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop="
+            alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title clearfix">Spark Plan
+              <div class="pull-right">
+                <small>Free</small>
+              </div>
+            </h4>
+            <p>
+              <small>Generous limits for hobbyists</small>
+            </p>
+          </div>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Realtime Database</th>
+                <td>10 GB/month</td>
+              </tr>
+              <tr>
+                <th scope="row">Automated backups</th>
+                <td><i class="fa fa-times text-danger"></i></td>
+              </tr>
+              <tr>
+                <th scope="row">Cloud Firestore</th>
+                <td>1 GB total</td>
+              </tr>
+              <tr>
+                <th scope="row">Storage</th>
+                <td>5 GB</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-footer text-center bg-transparent border-top-0">
+            <button class="btn btn-outline-primary">SELECT PLAN</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="card border-primary box-shadow h-100">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1498373419901-52eba931dc4f?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop="
+            alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title clearfix">Flame Plan
+              <div class="pull-right">
+                <small>$25/month</small>
+              </div>
+            </h4>
+            <p>
+              <small>Fixed pricing for growing apps</small>
+            </p>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content
+              than the first to show that equal height action.</p>
+          </div>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Realtime Database</th>
+                <td class="text-success">20 GB/month</td>
+              </tr>
+              <tr>
+                <th scope="row">Automated backups</th>
+                <td>
+                  <i class="fa fa-check text-success"></i>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Cloud Firestore</th>
+                <td class="text-success">2.5 GB total</td>
+              </tr>
+              <tr>
+                <th scope="row">Storage</th>
+                <td class="text-success">50 GB</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-footer text-center bg-transparent border-top-0">
+            <button class="btn btn-primary">SELECT PLAN</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md py-4">
+        <div class="card border-0 box-shadow h-100">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1428190318100-06790c8b2e5a?dpr=2&auto=format&fit=crop&w=1500&h=1072&q=80&cs=tinysrgb&crop="
+            alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title clearfix">Blaze Plan
+              <div class="pull-right">
+                <small>Pay as you go</small>
+              </div>
+            </h4>
+            <p>
+              <small>Calculate pricing for apps at scale</small>
+            </p>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+
+          </div>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Realtime Database</th>
+                <td>$5/GB</td>
+              </tr>
+              <tr>
+                <th scope="row">Automated backups</th>
+                <td>
+                  <i class="fa fa-check text-success"></i>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Cloud Firestore</th>
+                <td>$0.18/GB</td>
+              </tr>
+              <tr>
+                <th scope="row">Storage</th>
+                <td>$0.026/GB</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-footer text-center bg-transparent border-top-0">
+            <button class="btn btn-outline-primary">SELECT PLAN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="/javascripts/vendor.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      window.addEventListener("load", function () {
+        var form = document.getElementById("needs-validation");
+        form.addEventListener("submit", function (event) {
+          if (form.checkValidity() == false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        }, false);
+      }, false);
+    }());
+  </script>
+</body>
+
+</html>

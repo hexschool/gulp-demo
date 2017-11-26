@@ -1,0 +1,281 @@
+
+//== 捲軸效果的 extend
+%scrollbar-style {
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: $gray-900;
+    }
+  }
+	&::-webkit-scrollbar {
+    height: 4px;
+		width: 4px;
+		padding: 4px;
+		background-color: transparent;
+  }
+	&::-webkit-scrollbar-thumb {
+    background-color: rgba(#aaa,.3);
+  }
+	&::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+//== Nav Panel
+// 樣式變數可先拉到元件頁面的上方
+$zindex-navpanel:          1010 !default;
+
+$navpanel-width: 240px;
+$navpanel-hide-text-width: 48px;
+$navpanel-hide-text-padding: 35px;
+$navpanel-padding: 15px;
+$navbar-height:   56px;
+
+$navbar-light-hover-bg: rgba($black,.1);
+$navbar-dark-bg: $gray-800;
+$navbar-dark-hover-bg: rgba($white,.1);
+
+$z-depth-1: 0 1px 1.5px rgba(black, .12);
+$z-depth-2: 0 3px 3px rgba(black, .16);
+$z-depth-3: 0 10px 10px rgba(black, .19);
+
+// 定義容器的空間
+.navpanel {
+  position: relative;
+  &.navpanel-fixed-left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: $zindex-navpanel;
+    transition: all .15s;
+  }
+}
+.navpanel-container {
+  position: relative;
+  width: $navpanel-width;
+  height: 100%;
+  box-shadow: $z-depth-3;
+
+  // 轉成 Flex 的樣式
+  &.navpanel-flex {
+    display: flex;
+    flex-direction: column;
+    .navpanel-header, .navpanel-footer {
+      flex: 0 0 auto;
+    }
+    .navpanel-body {
+      flex: 1 1 auto;
+      overflow-x: hidden;
+      overflow-y: auto;
+      @extend %scrollbar-style;
+    }
+  }
+}
+
+.navpanel-header, .navpanel-body, .navpanel-footer {
+  padding: $navpanel-padding;
+}
+
+// navpanel nav
+// 內層元素的定義
+// --------------------------------------------------
+.navpanel-nav {
+  margin-left: -$navpanel-padding;
+  margin-right: -$navpanel-padding;
+  a.navpanel-link {
+    padding-top: $nav-link-padding-y;
+    padding-bottom: $nav-link-padding-y;
+    padding-right: $nav-link-padding-y / 2;
+    display: block;
+    position: relative;
+    &:hover {
+      text-decoration: none;
+    }
+    @include clearfix;
+    .badge {
+      margin-top: .2em;
+      float: right;
+    }
+  }
+  li.active {
+    > a {
+      box-shadow: 3px 0 0 theme-color('primary') inset;
+      .navpanel-icon {
+        color: theme-color('primary');
+      }
+    }
+  }
+  li.disabled > a, li:disabled > a, a.disabled, a:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+  li ul {
+    transition: max-height .3s;
+    max-height: 0px;
+    overflow: hidden;
+  }
+  li.show{
+    box-shadow: 1px 0 0 theme-color('primary') inset;
+  }
+  li.show ul, li.active ul{
+    max-height: 600px;
+    background-color: rgba(black, .06);
+    box-shadow: 1px 3px 3px rgba(black, .06) inset;
+  }
+  &.has-icon {
+    a {
+      padding-left: $nav-link-padding-x*2;
+    }
+    .navpanel-icon, .icon {
+      line-height: 1.5;
+      position: absolute;
+      top: $nav-link-padding-y;
+      left: $nav-link-padding-x - 0.2;
+    }
+  }
+}
+
+// 元素互動的控制器
+// --------------------------------------------------
+body {
+  &.navpanel-is-top {
+    .navpanel-fixed-left {
+      top: 0;
+    }
+    .navbar {
+      left: $navpanel-width;
+    }
+  }
+  &.navbar-is-top {
+    padding-top: $navbar-height;
+    .navpanel-fixed-left {
+      top: $navbar-height;
+    }
+    .navbar {
+      left: 0;
+    }
+  }
+}
+
+body.has-navpanel-fixed {
+  padding-left: $navpanel-width;
+  transition: all .15s;
+  //if hide navpanel active
+  &.hide-navpanel {
+    padding-left: 0;
+    .navpanel {
+      transform: translateX(-100%);
+    }
+    .navbar {
+      left: 0;
+    }
+  }
+}
+
+.has-navpanel-container {
+  padding-left: $navpanel-width;
+}
+
+.navpanel-has-footer {
+  .navpanel-footer {
+    padding: $navpanel-padding;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+
+// 主題化 navpanels
+// --------------------------------------------------
+
+// 亮色主題 navpanel
+.navpanel-light {
+  background-color: $gray-100;
+
+  .navpanel-header {
+    color: $navbar-light-active-color;
+  }
+
+  .navpanel-text {
+    color: $navbar-light-active-color;
+  }
+  .navpanel-title {
+    color: $navbar-light-active-color;
+  }
+  .navpanel-nav {
+    > li > a {
+      color: $navbar-light-active-color;
+
+      &:hover {
+        color: $navbar-light-active-color;
+        background-color: $navbar-light-hover-bg;
+      }
+    }
+    > .active > a {
+      &:hover,
+      &:focus {
+        color: $navbar-light-active-color;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-light-disabled-color;
+      }
+    }
+  }
+
+  // Dropdown menu items
+  .navpanel-nav {
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-light-hover-bg;
+      }
+    }
+  }
+
+  .navpanel-link {
+    color: $navbar-light-color;
+    &:hover {
+      color: $navbar-light-hover-color;
+    }
+  }
+}
+
+
+// dark navPanel
+.navpanel-dark {
+  background-color: $navbar-dark-bg;
+  color: $navbar-dark-color;
+  a.navpanel-link {
+    color: $navbar-dark-color;
+  }
+  .navpanel-nav {
+    li > a {
+      color: $navbar-dark-color;
+      &:hover {
+        background-color: $navbar-dark-hover-bg;
+      }
+    }
+    > .active > a {
+      &:hover,
+      &:focus {
+        color: $navbar-light-active-color;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-light-disabled-color;
+      }
+    }
+  }
+}
+
