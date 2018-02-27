@@ -80,13 +80,9 @@ $theme-colors: map-merge((
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "dark":       $dark,
-  "hex":        #00cc99,
-  "custom":     blue,
+  "dark":       $dark
 ), $theme-colors);
 // stylelint-enable
-
-$theme-colors: map-remove($theme-colors, "warning", "custom");
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;
