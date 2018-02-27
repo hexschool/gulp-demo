@@ -22,7 +22,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('jade', () => {
-  return gulp.src(['./source/**/*.jade'])
+  return gulp.src(['./source/**/!(_)*.jade'])
     .pipe($.plumber())
     .pipe($.data(function (file) {
       var json = require('./source/data/data.json');
