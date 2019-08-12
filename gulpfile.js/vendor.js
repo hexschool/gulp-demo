@@ -26,5 +26,7 @@ const vendorJs = function(cb) {
   cb();
 };
 
+// 注意：這是 Node.js 的 module.exports
+// 並非 ES6 的方法
 exports.bowerTask = bowerTask;
 exports.vendorJs = vendorJs;
