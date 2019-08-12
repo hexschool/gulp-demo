@@ -14,7 +14,7 @@
     "babelify": "^7.3.0",
     "bootstrap": "4.0.0",
     "browser-sync": "^2.18.8",
-    "gulp": "3.9.1",
+    "gulp": "^4.0.2",
     "gulp-babel": "^6.1.2",
     "gulp-browserify": "^0.5.1",
     "gulp-clean": "^0.3.2",
