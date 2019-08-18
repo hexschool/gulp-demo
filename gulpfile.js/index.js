@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
-const mainBowerFiles = require('main-bower-files');
 const browserSync = require('browser-sync');
 const autoprefixer = require('autoprefixer');
 
@@ -14,7 +13,7 @@ console.log(options);
 
 gulp.task('clean', () => {
   return gulp
-    .src(['./public', './.tmp'], { read: false }) // 選項讀取：false 阻止 gulp 讀取文件的內容，使此任務更快。
+    .src(['./public/**/*', './.tmp'], { read: false, allowEmpty: true }) // 選項讀取：false 阻止 gulp 讀取文件的內容，使此任務更快。
     .pipe($.clean());
 });
 
