@@ -13,9 +13,11 @@ console.log(options);
 
 gulp.task('clean', () => {
   return gulp
-    .src(['./public/**/*', './.tmp'], { read: false, allowEmpty: true }) // 選項讀取：false 阻止 gulp 讀取文件的內容，使此任務更快。
+    .src(['./.tmp', './public/**/*'], { read: false, allowEmpty: true }) // 選項讀取：false 阻止 gulp 讀取文件的內容，使此任務更快。
     .pipe($.clean());
 });
+// 當從 ['./public/**/*', './.tmp']陣列 換成 ['./.tmp', './public/**/*']
+// 就可以重覆一直刷 gulp build 不跳錯誤
 
 gulp.task('jade', () => {
   return gulp
