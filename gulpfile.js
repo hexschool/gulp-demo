@@ -16,7 +16,8 @@ const options = minimist(process.argv.slice(2), envOptions);
 console.log(options);
 
 gulp.task('clean', () => {
-  return gulp.src(['./public', './.tmp'], { read: false }) // 選項讀取：false阻止gulp讀取文件的內容，使此任務更快。
+  return gulp
+    .src(['./public', './.tmp'], { read: false, allowEmpty: true }) // 選項讀取：false阻止gulp讀取文件的內容，使此任務更快。
     .pipe($.clean());
 });
 
@@ -55,7 +56,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('copy', function () {
-  gulp.src(['./source/**/**', '!source/stylesheets/**/**'])
+  return gulp.src(['./source/**/**', '!source/stylesheets/**/**'])
     .pipe(gulp.dest('./public/'))
     .pipe(browserSync.reload({
       stream: true
@@ -70,8 +71,14 @@ gulp.task('browserSync', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./source/stylesheets/**/*.sass', './source/stylesheets/**/*.scss'], ['sass']);
-  gulp.watch(['./source/**/**', '!/source/stylesheets/**/**'], ['copy']);
+  gulp.watch(
+    ['./source/stylesheets/**/*.sass', './source/stylesheets/**/*.scss'],
+    gulp.series('sass')
+  );
+  gulp.watch(
+    ['./source/**/**', '!/source/stylesheets/**/**'],
+    gulp.series('copy')
+  );
 });
 
 gulp.task('deploy', function () {
@@ -79,7 +86,14 @@ gulp.task('deploy', function () {
     .pipe($.ghPages());
 });
 
-gulp.task('sequence', gulpSequence('clean', 'copy', 'sass', 'vendorJs', 'sass'));
+// gulp.task('sequence', gulpSequence('clean', 'copy', 'sass', 'vendorJs', 'sass'));
 
-gulp.task('default', ['copy', 'sass', 'vendorJs', 'browserSync', 'watch']);
-gulp.task('build', ['sequence'])
+// gulp.task('default', ['copy', 'sass', 'vendorJs', 'browserSync', 'watch']);
+
+// // gulp.task('build', ['sequence'])
+gulp.task(
+  'default',
+  gulp.series('copy', 'sass', 'vendorJs', 'browserSync', 'watch')
+);
+
+gulp.task('build', gulp.series('clean', 'copy', 'sass', 'vendorJs', 'sass'));
