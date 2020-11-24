@@ -63,11 +63,12 @@ gulp.task('copy', function () {
     }));
 });
 
-gulp.task('browserSync', function () {
+gulp.task('browserSync', function (done) {
   browserSync.init({
     server: { baseDir: './public' },
     reloadDebounce: 2000
-  })
+  });
+  done();
 });
 
 gulp.task('watch', function () {
